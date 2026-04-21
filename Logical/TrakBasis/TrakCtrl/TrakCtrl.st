@@ -477,7 +477,7 @@ PROGRAM _CYCLIC
 					MC_BR_AsmReset_AcpTrak_0.Execute := NOT MC_BR_AsmReset_AcpTrak_0.Error;	
 				// Shuttle errors can be reset using MC_Reset
 				ELSIF (MC_BR_AsmReadInfo_AcpTrak_0.AssemblyInfo.ShuttleCount.InErrorStop > 0) THEN
-					FOR i:=0 TO TRAK_MAX_SHUTTLE DO
+					FOR i:=0 TO TRAK_MAX_SHUTTLE_MINUS_ONE DO
 						MC_Reset_0[i].Axis := ADR(pTrakCtrl.Status.Shuttle[i].Axis);
 						MC_Reset_0[i].Execute := pTrakCtrl.Status.Shuttle[i].State.StatusErrorStop;
 					END_FOR
