@@ -345,7 +345,11 @@ PROGRAM _CYCLIC
 			
 			IF MC_BR_ShSetUserID_AcpTrak_0.Done THEN
 				Counter := Counter + 1;
-				TrakState := TRAK_STATE_SH_RESTORE_UID;
+				IF Counter > TRAK_MAX_SHUTTLE_MINUS_ONE THEN
+                    TrakState := TRAK_STATE_STANDSTILL;
+                ELSE
+                    TrakState := TRAK_STATE_SH_RESTORE_UID;
+                END_IF;
 			END_IF		
 
 		TRAK_STATE_STANDSTILL:
